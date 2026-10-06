@@ -1,28 +1,37 @@
-name: Tests
+name: PR Checks
 
 on:
-    push:
     pull_request:
+        branches:
+            - waha-compatible
 
 concurrency:
     group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
     cancel-in-progress: true
 
 jobs:
-    tests:
-        name: Tests
+    checks:
+        name: checks
         runs-on: ubuntu-latest
+        timeout-minutes: 15
         steps:
             - name: Checkout repository
               uses: actions/checkout@v6
 
-            - name: Install Node.js v20
+            - name: Install Node.js
               uses: actions/setup-node@v6
               with:
-                  node-version: 20
+                  node-version: 24
+                  cache: npm
 
             - name: Install dependencies
-              run: npm install
+              run: npm ci
 
-            - name: Run Eslint
+            - name: Run ESLint
               run: npm run lint
+
+            - name: Run unit tests
+              run: npm run test:unit
+
+            - name: Validate package
+              run: npm run build

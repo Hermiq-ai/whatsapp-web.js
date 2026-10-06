@@ -5,8 +5,11 @@
     "main": "./index.js",
     "typings": "./index.d.ts",
     "scripts": {
-        "test": "mocha tests --recursive --timeout 5000",
+        "test": "npm run test:unit",
+        "test:unit": "mocha tests/unit --recursive --timeout 5000",
+        "test:integration": "mocha tests/client.js tests/structures --recursive --timeout 30000",
         "test-single": "mocha",
+        "build": "npm pack --dry-run",
         "shell": "node --experimental-repl-await ./shell.js",
         "generate-docs": "npx jsdoc --configure .jsdoc.json --verbose",
         "lint": "eslint .",
