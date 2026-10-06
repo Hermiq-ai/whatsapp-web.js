@@ -1392,7 +1392,7 @@ class Client extends EventEmitter {
                             .require('WAWebUserPrefsIndexedDBStorage')
                             .userPrefsIdb.get('WAReachoutTimelockState') ?? null
                     );
-                } catch (err) {
+                } catch (ignoredError) {
                     return null;
                 }
             };
@@ -1412,7 +1412,7 @@ class Client extends EventEmitter {
                         'reachout_timelock_state_change',
                         notifyReachoutTimelock,
                     );
-            } catch (err) {
+            } catch (ignoredError) {
                 // No WAWebCmd - polling below still covers the updates
             }
 
@@ -1430,7 +1430,7 @@ class Client extends EventEmitter {
                             )
                             .getCappingData() ?? null
                     );
-                } catch (err) {
+                } catch (ignoredError) {
                     return null;
                 }
             };
@@ -1450,7 +1450,7 @@ class Client extends EventEmitter {
                         'new_chat_message_capping_state_change',
                         notifyMessageCapping,
                     );
-            } catch (err) {
+            } catch (ignoredError) {
                 // No WAWebCmd - polling below still covers the updates
             }
 
@@ -1550,7 +1550,7 @@ class Client extends EventEmitter {
                 await window
                     .require('WAWebGetReachoutTimelockJob')
                     .fetchReachoutTimelock();
-            } catch (err) {
+            } catch (ignoredError) {
                 // Module missing (lazy chunk not registered) or MEX failure -
                 // fall back to the locally cached state so callers still get something
             }
@@ -1560,7 +1560,7 @@ class Client extends EventEmitter {
                         .require('WAWebUserPrefsIndexedDBStorage')
                         .userPrefsIdb.get('WAReachoutTimelockState') ?? null
                 );
-            } catch (err) {
+            } catch (ignoredError) {
                 return undefined;
             }
         });
@@ -1580,7 +1580,7 @@ class Client extends EventEmitter {
                 return await window
                     .require('WAWebMexFetchNewChatMessageCappingInfoJob')
                     .mexFetchNewChatMessageCapping();
-            } catch (err) {
+            } catch (ignoredError) {
                 // Module missing (lazy chunk not registered) or MEX failure -
                 // fall back to the locally cached state so callers still get something
                 try {
@@ -1591,7 +1591,7 @@ class Client extends EventEmitter {
                             )
                             .getCappingData() ?? null
                     );
-                } catch (err2) {
+                } catch (ignoredError) {
                     return null;
                 }
             }

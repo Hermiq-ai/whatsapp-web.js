@@ -1,5 +1,16 @@
 # Running Tests
 
+## Unit tests
+
+Unit tests do not require a WhatsApp account, a browser session, or secrets.
+They run on every pull request.
+
+```bash
+npm test
+```
+
+## Integration tests
+
 These tests require an authenticated WhatsApp Web session, as well as an additional phone that you can send messages to.
 
 This can be configured using the following environment variables:
@@ -12,5 +23,5 @@ You can create a `.env` file in the root directory with these variables. See `.e
 To run the tests:
 
 ```bash
-npm test
+npm run test:integration
 ```
