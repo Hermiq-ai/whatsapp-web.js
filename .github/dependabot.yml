@@ -8,4 +8,4 @@ updates:
       labels:
           - 'dependencies'
           - 'dependabot'
-      target-branch: 'main'
+      target-branch: 'waha-compatible'
