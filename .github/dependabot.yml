@@ -1,5 +1,6 @@
 version: 2
 updates:
+    # waha-compatible is the default branch and the one Hermiq-ai/waha pins.
     - package-ecosystem: 'npm'
       directory: '/'
       open-pull-requests-limit: 10
@@ -9,3 +10,13 @@ updates:
           - 'dependencies'
           - 'dependabot'
       target-branch: 'waha-compatible'
+    # main tracks upstream wwebjs; keep its dependencies current too.
+    - package-ecosystem: 'npm'
+      directory: '/'
+      open-pull-requests-limit: 10
+      schedule:
+          interval: 'monthly'
+      labels:
+          - 'dependencies'
+          - 'dependabot'
+      target-branch: 'main'
