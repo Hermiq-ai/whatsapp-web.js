@@ -5,7 +5,7 @@ updates:
       directory: '/'
       open-pull-requests-limit: 10
       schedule:
-          interval: 'monthly'
+          interval: 'daily'
       labels:
           - 'dependencies'
           - 'dependabot'
@@ -15,7 +15,7 @@ updates:
       directory: '/'
       open-pull-requests-limit: 10
       schedule:
-          interval: 'monthly'
+          interval: 'daily'
       labels:
           - 'dependencies'
           - 'dependabot'
